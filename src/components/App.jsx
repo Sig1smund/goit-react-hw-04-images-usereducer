@@ -6,7 +6,6 @@ import fetcher from 'services/fetch';
 import Button from './Button';
 import Loader from './Loader';
 import Modal from './Modal';
-import './styles.css';
 
 const initialState = {
   search: '',
