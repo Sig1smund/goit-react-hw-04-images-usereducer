@@ -6,7 +6,6 @@ import {
   FormButton,
   FormInput,
 } from './searchBar.styled';
-import '../styles.css';
 
 export default function SearchBar({ onSubmit }) {
   const [inputValue, setInputValue] = useState('');
