@@ -7,7 +7,6 @@ import Button from './Button';
 import Loader from './Loader';
 import Modal from './Modal';
 import './styles.css';
-import { act } from 'react-dom/test-utils';
 
 const initialState = {
   search: '',
@@ -77,7 +76,6 @@ export default function App() {
   const Gallery = useRef(null);
   const { page, search, spinner, modal, items, totalItems, large, imageTags } = state;
   const prevSearch = useRef(search);
-  console.log(state.search);
 
   const modalClickToggler = () => dispatch({ type: 'toggle-modal' });
 
@@ -109,7 +107,7 @@ export default function App() {
 
       dispatch({ type: 'toogle-spinner' });
 
-      fetcher(state.search, page)
+      fetcher(search, page)
         .then(({ hits: images, totalHits: totalItems }) => {
           if (totalItems === 0) {
             window.alert(`No images found by keyword ${search}`)
