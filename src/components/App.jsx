@@ -22,10 +22,10 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'set-new-search': {
-      const {e} = action.payload
+      const {newSearch} = action.payload
       return {
         ...state,
-        search: e,
+        search: newSearch,
         page: initialState.page,
         items: initialState.items
       };
@@ -64,14 +64,6 @@ function reducer(state, action) {
 }
 
 export default function App() {
-  // const [search, setSearch] = useState('');
-  // const [items, setItems] = useState([]);
-  // const [totalItems, setTotalItems] = useState(null)
-  // const [page, setPage] = useState(1);
-  // const [spinner, setSpinner] = useState(false);
-  // const [largeImg, setLargeImg] = useState('');
-  // const [tags, setTags] = useState('');
-  // const [modal, setModal] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
   const Gallery = useRef(null);
   const { page, search, spinner, modal, items, totalItems, large, imageTags } = state;
@@ -89,9 +81,9 @@ export default function App() {
     };
   };
 
-  const handleFormSubmit = e => {
-    if (e !== prevSearch) {
-      dispatch({ type: 'set-new-search', payload: { e } });
+  const handleFormSubmit = newSearch => {
+    if (newSearch !== prevSearch) {
+      dispatch({ type: 'set-new-search', payload: { newSearch } });
     };
   }
 
